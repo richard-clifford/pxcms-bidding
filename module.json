@@ -8,7 +8,9 @@
             "email": "rclifford@cybershade.org"
         }
     ],
-    "keywords": [],
+    "keywords": [
+        "custom-module"
+    ],
     "version": "v1.0.0",
     "active": 1,
     "order": 10,

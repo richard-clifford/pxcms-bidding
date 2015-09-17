@@ -2,7 +2,7 @@
 
 use Cms\Modules\Core\Http\Controllers\BaseBackendController;
 
-class BiddingAdmin extends BaseBackendController
+class BiddingAdminController extends BaseBackendController
 {
 
     public function getOverview()
