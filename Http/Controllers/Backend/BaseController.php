@@ -9,7 +9,7 @@ class BaseController extends BaseBackendController
     {
         parent::boot();
 
-        $this->theme->setTitle('bidding');
+        $this->theme->setTitle('Bidding');
     }
 
 }

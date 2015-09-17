@@ -7,7 +7,9 @@ class BiddingAdminController extends BaseBackendController
 
     public function getOverview()
     {
-        return 'Hello Admin view';
+        return $this->setView('backend.index', [
+
+        ]);
     }
 
 }

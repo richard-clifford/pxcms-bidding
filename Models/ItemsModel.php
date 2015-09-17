@@ -4,7 +4,7 @@ class Items extends BaseModel {
 
 	protected $table = 'items';
 	protected $guarded = ['id'];
-	protected $fillable = ['name', 'start_price', 'start_time', 'end_time', 'authored_by', 'RRP', 'created_at', 'modified_at'];
+	protected $fillable = ['name', 'start_price', 'start_time', 'end_time', 'authored_by', 'condition', 'rarity', 'is_stattrak', 'RRP', 'created_at', 'modified_at'];
 
 
     public function getItemById($itemId) 
