@@ -1,18 +1,13 @@
 <?php namespace Cms\Modules\Bidding\Models;
 
-use Cms\Modules\Core\Models\BaseModel as CoreBaseModel;
+class Bidding extends BaseModel {
 
-class BaseModel extends CoreBaseModel
-{
-
-	public $timestamps = true;
-
-    public function __construct()
+	public function __construct()
     {
         parent::__construct();
 
         $prefix = config('cms.bidding.config.table-prefix', 'bidding_');
+        
         $this->table = $prefix.$this->table;
     }
-
 }
