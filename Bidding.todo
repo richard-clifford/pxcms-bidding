@@ -1,0 +1,42 @@
+Todo List 
+
+Development
+
+-	Bidding Model
+
+
+-	Bidding Controller
+
+
+-	Admin Section
+	---- Ability to add/modify/delete products
+		-- Price
+		-- Image
+		-- Start Price
+		-- Refresh Interval (Per bid click - 10s)
+		-- Ability to soft delete
+
+	---- Donation of Skins for bids?
+		-- Donate skins to get n-bids depending on the price of the skins and how rare they are (or how many we have stored).
+		-- 
+
+
+-	Bots
+	---- View status of all bots
+	---- How many transactions have been done
+	---- IDS Logs?
+	---- IRC Integration?
+		// <Mantis> !bots status
+		// <BotMaster> Bot#1 <Status: Good> <Load: 32%>
+		// <BotMaster> Bot#2 <Status: Under Load> <Load: 89%>
+		// <BotMaster> Bot#3 <Status: Idle> <Load: 5%>
+
+
+
+Server Related
+
+-	Web Application Firewall/WAF
+	---- Decide on a WAF (PHPIDS/mod_security?)
+	----
+
+

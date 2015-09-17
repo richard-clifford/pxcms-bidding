@@ -1,0 +1,16 @@
+{
+    "name": "richard-clifford/pxcms-bidding",
+    "type": "pxcms-module",
+    "description": "Bidding Module for PhoenixCMS",
+    "license": "MIT",
+    "authors": [
+        { "name": "richard-clifford", "email": "rclifford@cybershade.org" }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "composer/installers" : "dev-master"
+    },
+    "repositories": [
+        { "type": "vcs", "url": "https://github.com/cysha/installers" }
+    ]
+}

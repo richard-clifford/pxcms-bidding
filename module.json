@@ -1,0 +1,23 @@
+{
+    "name": "Bidding",
+    "alias": "bidding",
+    "description": "Bidding Module for Phoenix CMS",
+    "authors": [
+        { "name": "richard-clifford (Richard Clifford)", "email": "rclifford@cybershade.org" }
+    ],
+    "keywords": [
+    ],
+    "version": "v1.0.0",
+    "active": 0,
+    "order": 10,
+    "providers": [
+        "Cms\\Modules\\Bidding\\Providers\\BiddingModuleServiceProvider",
+        "Cms\\Modules\\Bidding\\Providers\\BiddingEventsProvider",
+        "Cms\\Modules\\Bidding\\Providers\\BiddingRoutingProvider"
+    ],
+    "aliases": {
+    },
+    "files": [
+        "helpers.php"
+    ]
+}
