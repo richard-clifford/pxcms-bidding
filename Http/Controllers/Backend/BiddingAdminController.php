@@ -7,7 +7,7 @@ class BiddingAdminController extends BaseBackendController
 
     public function getOverview()
     {
-        return $this->setView('backend.index', [
+        return $this->setView('frontend.index', [
 
         ]);
     }
