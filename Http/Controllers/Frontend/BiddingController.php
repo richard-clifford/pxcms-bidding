@@ -14,22 +14,22 @@ class BiddingController extends BaseController
 
     public function processBid($item_id) {
 
-    	$intOut = 0;
+        $intOut = 0;
 
-    	$bidCount = intval(Bidding::getUserBidCount());
+        $bidCount = intval(Bidding::getUserBidCount());
 
-    	if($bidCount > 0) {
+        if($bidCount > 0) {
 
-    		$bidOnItem = Bidding::bidOnItem($item_id);
+            $bidOnItem = Bidding::bidOnItem($item_id);
 
-    		$updateUserBidCount = Bidding::updateUserBidCount(($bidCount - 1));
+            $updateUserBidCount = Bidding::updateUserBidCount(($bidCount - 1));
 
-    		if($updateUserBidCount === true) {
+            if($updateUserBidCount === true) {
 
-    			$intOut = 1;
-    		}
-    	}
+                $intOut = 1;
+            }
+        }
 
-    	return $intOut;
+        return $intOut;
     }
 }
