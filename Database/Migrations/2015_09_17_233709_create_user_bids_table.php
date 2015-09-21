@@ -12,7 +12,7 @@ class CreateUserBidsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_bids', function (Blueprint $table) {
+        Schema::create('bidding_bids', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('bid_count');
@@ -27,6 +27,6 @@ class CreateUserBidsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('user_bids');
+        Schema::drop('bidding_bids');
     }
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 
-class Bidding extends BaseModel {
+class Bid extends BaseModel {
 
     public function __construct()
     {

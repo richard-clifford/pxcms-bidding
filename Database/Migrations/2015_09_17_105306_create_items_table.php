@@ -12,7 +12,7 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('bidding_items', function (Blueprint $table) {
             $table->increments('id')->unsigned;
             $table->string('name', 255);
             $table->float('start_price');
@@ -35,6 +35,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('items');
+        Schema::drop('bidding_items');
     }
 }

@@ -1,6 +1,6 @@
 <?php namespace Cms\Modules\Bidding\Models;
 
-class Items extends BaseModel {
+class Item extends BaseModel {
 
 	protected $table = 'items';
 	protected $guarded = ['id'];
