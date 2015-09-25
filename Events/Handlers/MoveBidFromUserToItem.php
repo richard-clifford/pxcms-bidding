@@ -1,18 +1,21 @@
 <?php namespace Cms\Modules\Bidding\Events\Handlers;
 
-use Cms\Modules\Auth\Repositories\User\RepositoryInterface as UserRepo;
-use Cms\Modules\Bidding\Repositories\Item\RepositoryInterface as ItemRepo;
-use Cms\Modules\Bidding\Events\UserHasBidOnItem;
-use Illuminate\Support\Facades\Request;
 use BeatSwitch\Lock\Manager;
+use Cms\Modules\Auth\Repositories\User\RepositoryInterface as UserRepo;
+use Cms\Modules\Bidding\Events\UserHasBidOnItem;
+use Cms\Modules\Bidding\Repositories\Item\RepositoryInterface as ItemRepo;
+use Cms\Modules\Bidding\Services\BidService;
+use Illuminate\Support\Facades\Request;
 
 class MoveBidFromUserToItem
 {
 
-    public function __construct(ItemRepo $itemRepo, UserRepo $userRepo)
+    public function __construct(ItemRepo $itemRepo, UserRepo $userRepo, BidService $bidService)
     {
         $this->itemRepo = $itemRepo;
         $this->userRepo = $userRepo;
+
+        $this->bidService = $bidService;
     }
 
 
@@ -40,8 +43,19 @@ class MoveBidFromUserToItem
             throw new Exception('Expected userId, null given');
         }
 
-        
+        // Check if user can bid (is not banned, is active and has bids)
+        $userBidCount = $this->bidService->getUserBidCount();
+
+        if($userBidCount <= 0) {
+            throw new Exception(sprintf('User ID: %s Does not have any bids', $event->userId));
+        }
+
         // Move bid from user to item listing.
+        $this->bidService->bidOnItem($event->itemId);
+        
+
+        // Update timer, price, etc
+
 
         return;
     }
