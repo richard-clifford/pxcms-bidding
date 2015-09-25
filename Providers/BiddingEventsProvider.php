@@ -17,8 +17,10 @@ class BiddingEventsProvider extends BaseEventsProvider
         ],
 
         /**
+         * BiddingController@processBid
          */
         'Cms\Modules\Bidding\Events\UserHasBidOnItem' => [
+            'Cms\Modules\Bidding\Events\Handlers\MoveBidFromUserToItem'
         ],
 
         /**

@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Eloquent\Collection;
 use Cms\Modules\Core\Repositories\BaseEloquentRepository;
-use Cms\Modules\Auth\Repositories\Item\RepositoryInterface as UserRepository;
+use Cms\Modules\Bidding\Repositories\Item\RepositoryInterface as ItemRepository;
 
-class EloquentRepository extends BaseEloquentRepository implements UserRepository
+class EloquentRepository extends BaseEloquentRepository implements ItemRepository
 {
     public function getModel()
     {

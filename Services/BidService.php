@@ -6,10 +6,10 @@ use Pingpong\Modules\Repository as Module;
 
 class BidService
 {
-	
-	/**
-	* @var Illuminate\Contracts\Config\Repository
-	*/
+    
+    /**
+    * @var Illuminate\Contracts\Config\Repository
+    */
     protected $config;
 
     /**
@@ -25,20 +25,16 @@ class BidService
 
     public function getUserBidCount($user_id)
     {
-    	$userId = Auth::id();
+        $userId = Auth::id();
 
-    	$authModel = config('auth.model');
-    	
-    	$user =  with(new $authModel)
-    		->with(['bid'])
-    		->find($userId);
+        $authModel = config('auth.model');
+
+        $user =  with(new $authModel)
+            ->with(['bid'])
+            ->find($userId);
 
 
-		return !empty($user) && !empty($user->bid) ? $user->bid->bid_count : 0;
+        return !empty($user) && !empty($user->bid) ? $user->bid->bid_count : 0;
     }
 
-	public function processBid($itemId) 
-	{
-		
-	}
 }

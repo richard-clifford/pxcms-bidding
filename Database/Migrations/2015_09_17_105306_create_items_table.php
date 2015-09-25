@@ -16,10 +16,10 @@ class CreateItemsTable extends Migration
             $table->increments('id')->unsigned;
             $table->string('name', 255);
             $table->float('start_price');
-            $table->integer('condition');
+            $table->tinyInteger('condition');
             $table->boolean('is_stattrak');
             $table->float('RRP');
-            $table->integer('rarity');
+            $table->tinyInteger('rarity');
             $table->timestamp('start_time');
             $table->timestamp('end_time');
             $table->integer('user_id')->unsigned;

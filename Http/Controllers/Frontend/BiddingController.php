@@ -2,17 +2,12 @@
 
 use Cms\Modules\Bidding\Events\UserHasBidOnItem;
 use Cms\Modules\Bidding\Http\Controllers\Frontend\BiddingController;
-use Cms\Modules\Bidding\Services\BidService;
-use Illuminate\Http\Request;
+use Cms\Modules\Bidding\Models\Item;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class BiddingController extends BaseController
 {
-
-    public function __construct(BidService $bid)
-    {
-        $this->bid = $bid;
-    }
 
     public function getIndex()
     {
@@ -21,22 +16,11 @@ class BiddingController extends BaseController
         ]);
     }
 
-    public function processBid(Request $input) 
+    public function processBid(Item $item) 
     {
-
-        dd($input);
-
-        $item = $input->get('item_id');
-        $bids = $input->get('bids');
-
-        if(empty($item) || empty($bids)) {
-            return false;
-        }
-
-        dd($item, $bids);
-
-        event(new UserHasBidOnItem(Auth::id(), $item));
-
+        
+        event(new UserHasBidOnItem(Auth::id(), $item->id)); 
+        
         return;
     }
 }

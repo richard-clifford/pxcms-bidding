@@ -11,7 +11,7 @@ $router->group(['prefix' => 'bidding'], function (Router $router) {
 	// All AJAX stuff
 	$router->group(['prefix' => 'bid'], function(Router $router) {
 
-		$router->get('{item_id}', ['as' => 'pxcms.bidding.bid', 'uses' => 'BiddingController@processBid']);
+		$router->get('{bidding_item_id}', ['as' => 'pxcms.bidding.bid', 'uses' => 'BiddingController@processBid']);
 	});
 });
 

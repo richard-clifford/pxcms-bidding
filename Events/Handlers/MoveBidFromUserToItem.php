@@ -1,10 +1,10 @@
-<?php namespace Cms\Modules\Auth\Events\Handlers;
+<?php namespace Cms\Modules\Bidding\Events\Handlers;
 
+use Cms\Modules\Auth\Repositories\User\RepositoryInterface as UserRepo;
+use Cms\Modules\Bidding\Repositories\Item\RepositoryInterface as ItemRepo;
 use Cms\Modules\Bidding\Events\UserHasBidOnItem;
 use Illuminate\Support\Facades\Request;
 use BeatSwitch\Lock\Manager;
-use Cms\Modules\Auth\Repositories\User\RepositoryInterface as UserRepo;
-use Cms\Modules\Bidding\Repositories\Item\RepositoryInterface as ItemRepo;
 
 class MoveBidFromUserToItem
 {
@@ -13,7 +13,6 @@ class MoveBidFromUserToItem
     {
         $this->itemRepo = $itemRepo;
         $this->userRepo = $userRepo;
-
     }
 
 
@@ -25,22 +24,25 @@ class MoveBidFromUserToItem
      */
     public function handle(UserHasBidOnItem $event)
     {
+        if (in_array(null, [$event->userId, $event->itemId])) {
+            throw new Exception('Undefined Variable being passed. Expected UserId and ItemId');
+        }
+
         // validate the item exists
-        $item = $itemRepo->getById($event->itemId);
+        $item = $this->itemRepo->getById($event->itemId);
         if ($item === null) {
-            return false;
+            throw new Exception('Expected itemId, null given');
         }
 
         // validate the current user has >= bids trying to bid on
-        $user = $userRepo->getById($event->userId);
+        $user = $this->userRepo->getById($event->userId);
         if ($user === null) {
-            return false;
+            throw new Exception('Expected userId, null given');
         }
 
-        dd($user->find(['id'])->firstOrFail());
+        
+        // Move bid from user to item listing.
 
-
-        return $event->config;
+        return;
     }
-
 }

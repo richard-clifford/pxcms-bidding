@@ -37,5 +37,8 @@ class BiddingRoutingProvider extends CmsRoutingProvider
     {
         parent::boot($router);
 
+        $router->bind('bidding_item_id', function($item) {
+            return with(new \Cms\Modules\Bidding\Models\Item)->findOrFail($item);
+        });
     }
 }
