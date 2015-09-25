@@ -36,4 +36,9 @@ class ItemService
 
         return !empty($item) ? $item->id : 0;
     }
+
+    public function getAllCurrentListings() {
+        
+        return Item::where('active', 1)->get();
+    }
 }

@@ -20,6 +20,7 @@ class CreateItemsTable extends Migration
             $table->boolean('is_stattrak');
             $table->float('RRP');
             $table->tinyInteger('rarity');
+            $table->tinyInteger('active');
             $table->timestamp('start_time');
             $table->timestamp('end_time');
             $table->integer('user_id')->unsigned;
