@@ -11,6 +11,20 @@ class BiddingEventsProvider extends BaseEventsProvider
      * @var array
      */
     protected $listen = [
+        /**
+         */
+        'Cms\Modules\Bidding\Events\UserHasToppedUp' => [
+        ],
+
+        /**
+         */
+        'Cms\Modules\Bidding\Events\UserHasBidOnItem' => [
+        ],
+
+        /**
+         */
+        'Cms\Modules\Bidding\Events\UserHasWonItem' => [
+        ],
 
     ];
 

@@ -1,9 +1,18 @@
 <?php namespace Cms\Modules\Bidding\Http\Controllers\Frontend;
 
-use \Cms\Modules\Bidding\Models\Bidding;
+use Cms\Modules\Bidding\Events\UserHasBidOnItem;
+use Cms\Modules\Bidding\Http\Controllers\Frontend\BiddingController;
+use Cms\Modules\Bidding\Services\BidService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BiddingController extends BaseController
 {
+
+    public function __construct(BidService $bid)
+    {
+        $this->bid = $bid;
+    }
 
     public function getIndex()
     {
@@ -12,24 +21,23 @@ class BiddingController extends BaseController
         ]);
     }
 
-    public function processBid($item_id) {
+    public function processBid(Request $input) 
+    {
 
-        $intOut = 0;
+        dd($input);
 
-        $bidCount = intval(Bidding::getUserBidCount());
+        $item = $input->get('item_id');
+        $bids = $input->get('bids');
 
-        if($bidCount > 0) {
-
-            $bidOnItem = Bidding::bidOnItem($item_id);
-
-            $updateUserBidCount = Bidding::updateUserBidCount(($bidCount - 1));
-
-            if($updateUserBidCount === true) {
-
-                $intOut = 1;
-            }
+        if(empty($item) || empty($bids)) {
+            return false;
         }
 
-        return $intOut;
+        dd($item, $bids);
+
+        event(new UserHasBidOnItem(Auth::id(), $item));
+
+        return;
     }
 }
+

@@ -41,7 +41,7 @@ class BiddingModuleServiceProvider extends BaseModuleProvider
      * @var array
      */
     protected $bindings = [
-
+        'Cms\Modules\Bidding\Repositories\Item' => ['RepositoryInterface' => 'EloquentRepository'],
     ];
 
     /**
